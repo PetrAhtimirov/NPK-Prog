@@ -1,0 +1,112 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<section class="project-desc">
+  <p>Наш проект использует анализ данных для прогнозирования успеваемости студента и подсчета текущей статистики успеваемости группы.
+    С помощью баллов ЕГЭ и результатов олимпиад вы можете узнать прогназируемую среднюю оценку сессии.
+    <!--Это помогает преподавателям определить слабые места учеников и разработать персонализированные планы обучения для повышения успеваемости.-->
+  </p>
+</section>
+<section class="input-form">
+  <form method="post" action="{% url 'answer' %}" class="input-form__form">
+    {% csrf_token %}
+    <h1 class="form__title">Входные данные</h1>
+    <h2 class="form__subtitle">Группа обучения:</h2>
+    <ul class="form__radio-list">
+      <li class="form-check">
+        <input class="form-check-input" type="radio" name="groupRadio" id="groupRadio1" value="ivt_11_22" required>
+        <label class="form-check-label" for="groupRadio1">
+          ИВТ-11-22
+        </label>
+      </li>
+      <li class="form-check">
+        <input class="form-check-input" type="radio" name="groupRadio" id="groupRadio2" value="ivt_22_22" required>
+        <label class="form-check-label" for="groupRadio2">
+          ИВТ-22-22
+        </label>
+      </li>
+      <li class="form-check">
+        <input class="form-check-input" type="radio" name="groupRadio" id="groupRadio3" value="ivt_41_22" required>
+        <label class="form-check-label" for="groupRadio3">
+          ИВТ-41-22
+        </label>
+      </li>
+      <li class="form-check">
+        <input class="form-check-input" type="radio" name="groupRadio" id="groupRadio4" value="ivt_42_22" required>
+        <label class="form-check-label" for="groupRadio4">
+          ИВТ-42-22
+        </label>
+      </li>
+      <li class="form-check">
+        <input class="form-check-input" type="radio" name="groupRadio" id="groupRadio5" value="ivt_43_22" required>
+        <label class="form-check-label" for="groupRadio5">
+          ИВТ-43-22
+        </label>
+      </li>
+      <li class="form-check">
+        <input class="form-check-input" type="radio" name="groupRadio" id="groupRadio6" value="kt_31_22" required>
+        <label class="form-check-label" for="groupRadio6">
+          КТ-31-22
+        </label>
+      </li>
+      <li class="form-check">
+        <input class="form-check-input" type="radio" name="groupRadio" id="groupRadio7" value="kt_41_22" required>
+        <label class="form-check-label" for="groupRadio7">
+          КТ-41-22
+        </label>
+      </li>
+      <li class="form-check">
+        <input class="form-check-input" type="radio" name="groupRadio" id="groupRadio8" value="kt_42_22" required>
+        <label class="form-check-label" for="groupRadio8">
+          КТ-42-22
+        </label>
+      </li>
+    </ul>
+    <h2 class="form__subtitle">Результаты ЕГЭ:</h2>
+    <div class="form__ege">
+      <div class="input-group mb-3 form__ege__input-group">
+        <span class="input-group-text" id="inputGroup-sizing-default">Математика</span>
+        <input type="number" class="form-control" name="math" required>
+      </div>
+      <div class="input-group mb-3 form__ege__input-group">
+        <span class="input-group-text" id="inputGroup-sizing-default">Русский язык</span>
+        <input type="number" class="form-control" name="rus" required>
+      </div>
+      <div class="input-group mb-3 form__ege__input-group">
+        <span class="input-group-text" id="inputGroup-sizing-default">Информатика</span>
+        <input type="number" class="form-control" name="inf" required>
+      </div>
+    </div>
+    <h2 class="form__subtitle">Олимпиады:</h2>
+    <ul class="form__cheks-list">
+      <li class="form-check">
+        <input class="form-check-input" type="checkbox" value="1" id="flexCheck1" name="vsosh">
+        <label class="form-check-label" for="flexCheck1">
+          Региональный этап всроссийской олимпиады школьников
+        </label>
+      </li>
+      <li class="form-check">
+        <input class="form-check-input" type="checkbox" value="1" id="flexCheck2" name="perech">
+        <label class="form-check-label" for="flexCheck2">
+          Перечневые олимпиады
+        </label>
+      </li>
+      <li class="form-check">
+        <input class="form-check-input" type="checkbox" value="1" id="flexCheck3" name="chuvsu-olimp">
+        <label class="form-check-label" for="flexCheck3">
+          Олимпиада чувашского государственного университета
+        </label>
+      </li>
+      <li class="form-check">
+        <input class="form-check-input" type="checkbox" value="1" id="flexCheck4" name="nadezh">
+        <label class="form-check-label" for="flexCheck4">
+          Олимпиада «Надежда машиностроения Чувашии» / «Надежда электротехники Чувашии»
+        </label>
+      </li>
+    </ul>
+    <button class="btn btn-primary form__submit" type="submit">Отправить</button>
+  </form>
+</section>
+{% endblock %}

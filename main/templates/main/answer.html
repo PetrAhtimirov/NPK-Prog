@@ -1,0 +1,53 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Учебная Статистика{% endblock %}
+
+{% block content %}
+    <section class="answer-input">
+        <h1>Учебная Статистика</h1>
+        <h2 class="ans-subtitle">Входные данные:</h2>
+        <div class="ans-ege">
+            <p>Математика: {{ math }}</p>
+            <p>Русский язык: {{ rus }}</p>
+            <p>Информатика: {{ inf }}</p>
+        </div>
+        <p>Группа: {{ group }}</p>
+        {% if olymp %}
+            <p>Олимпиады:</p>
+            <ul>
+                {% for el in olymp %}
+                    <li>{{ el }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </section>
+    <section class="answer-output">
+        <h2 class="ans-subtitle">Результат:</h2>
+        <h3>Предпологаемая оценка: <b>{{ predict }}</b></h3>
+        <p class="groupEng d-none">{{ groupEng }}</p>
+        <p class="static d-none">{% static "main/img/" %}</p>
+        <h3 class="group-title">Учебная статистика группы {{ group }}</h3>
+        <div class="group-stat">
+            <p>Средний балл ЕГЭ по группе: <b>{{ summ_mean_ege }}</b></p>
+            <p>Количество призеров регионального этапа ВСОШ: <b>{{ region_counter }}</b></p>
+            <p>Количесвто призеров перечневых олимпиад: <b>{{ bvi_counter }}</b></p>
+            <p>Количесвто призеров олимпиады ЧГУ: <b>{{ chgu_counter }}</b></p>
+            <p>Количесвто призеров олимпиады Олимпиада «Надежда машиностроения Чувашии» / 
+               «Надежда электротехники Чувашии»: <b>{{ hope_counter }}</b></p>
+            <p>Средний балл ЕГЭ среди олимпиадников: <b>{{ mean_ball_olymp }}</b></p>
+        </div>
+        <div class="graphs-container">
+            <img class="graphs" src='' alt="">
+            <img class="graphs" src='' alt="">
+            <img class="graphs" src='' alt="">
+            <img class="graphs" src='' alt="">
+            <img class="graphs" src='' alt="">
+            <img class="graphs" src='' alt="">
+            <img class="graphs" src='' alt="">
+            <img class="graphs" src='' alt="">
+            <img class="graphs" src='' alt="">
+        </div>
+    </section>
+    <script src="{% static 'main/js/script.js' %}"></script>
+{% endblock %}
